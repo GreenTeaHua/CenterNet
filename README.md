@@ -54,7 +54,23 @@ All models and details are available in our [Model zoo](readme/MODEL_ZOO.md).
 ## Installation
 
 Please refer to [INSTALL.md](readme/INSTALL.md) for installation instructions.
-
+--------------------    build ------------------add by hua-----  
+1.https://github.com/xingyizhou/CenterNet
+2.vs2017或2019的工具链（pytorch1.3需要）
+3. 单独编译 nms
+   cd src\lib\external 
+   python setup.py build_ext --inplace
+4. 单独编译 DCNv2
+   cd src\lib\models\networks\DCNv2
+   python setup.py build develop
+   python setup.py install
+5. demo
+修改 demo：
+sys.path.append("D:/CenterNet/CenterNet/src/lib/models/networks/DCNv2");#添加路径
+from .DCNv2.dcn_v2 import DCN
+图片检测demo：
+  python demo.py ctdet --demo ../images/17790319373_bd19b24cfc_k.jpg --load_model ../models/ctdet_coco_dla_2x.pth 
+--------------------
 ## Use CenterNet
 
 We support demo for image/ image folder, video, and webcam. 
